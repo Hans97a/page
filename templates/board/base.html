@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{%endblock title%} - Hans</title>
+
+    <!--부트스트랩 링크코드-->
+    <!-- <link rel="stylesheet" href="{% static 'main/bootstrap.min.css' %}" media="screen"> -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--cssfile link for django-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'main/index.css'%}" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        .poppins {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .varela {
+            font-family: "Varela Round", sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <div class="container">
+            <h1><button data-animation-scroll="true" data-target="#main"><a href="/">Hans</a></button></h1>
+            <nav>
+                <ul>
+                    {% comment %} <li><button id="ko" onfocus="">
+                        <img src="../../static/main/korea.png" alt="english" style="height:16px; width:16px; border-radius:8px" /></button></li>
+                    <li><img src="../../static/main/english.png" alt="english"  /></li>
+                    <li><img src="../../static/main/german.png" alt="german"  /></li>
+                    <li>ㅣ</li> {% endcomment %}
+                    
+                    <li><button data-animation-scroll="true" data-target="#about"><a href="/">About</a></button></li>
+                    <li><button data-animation-scroll="true" data-target="#features"><a href="/">Features</a></button></li>
+                    <li><button data-animation-scroll="true" data-target="#portfolio"><a href="/">Portfolio</a></button></li>
+                    <li><button data-animation-scroll="true" data-target="#contact"><a href="/">Contact</a></button></li>
+                    <li><button><a href="#">Board</a></button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!--End of header-->
+    {% block main %}
+    {% endblock main %}
+
+
+
+    <script src="{% static 'main/index.js' %}"></script>
+    <script src="{% static 'main/lang.js' %}"></script>
+</body>
+</html>

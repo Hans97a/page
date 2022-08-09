@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Hans</title>
+
+    <!--부트스트랩 링크코드-->
+    <!-- <link rel="stylesheet" href="{% static 'main/bootstrap.min.css' %}" media="screen"> -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--cssfile link for django-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'main/index.css'%}" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        .poppins {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .varela {
+            font-family: "Varela Round", sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <div class="container">
+            <h1><button data-animation-scroll="true" data-target="#main">Hans</button></h1>
+            <nav>
+                <ul>
+                    {% comment %} <li><button id="ko" onfocus="">
+                        <img src="../../static/main/korea.png" alt="english" style="height:16px; width:16px; border-radius:8px" /></button></li>
+                    <li><img src="../../static/main/english.png" alt="english"  /></li>
+                    <li><img src="../../static/main/german.png" alt="german"  /></li>
+                    <li>ㅣ</li> {% endcomment %}
+                    
+                    <li><button data-animation-scroll="true" data-target="#about">About</button></li>
+                    <li><button data-animation-scroll="true" data-target="#features">Features</button></li>
+                    <li><button data-animation-scroll="true" data-target="#portfolio">Portfolio</button></li>
+                    <li><button data-animation-scroll="true" data-target="#contact">Contact</button></li>
+                    <li><button><a href="board/">Board</a></button></li>
+                    
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!--End of header-->
+
+    <!--main-->
+    <main id="main">
+        <div class="container">
+            <h4>Welcome</h4>
+            <h2>I'm <span></span></h2>
+            <p>You miss 100% of the shots you don't take</p>
+            <button class="download" onfocus="CV">DOWNLOAD CV</button>
+            <button class="mouse"><i class="fa-solid fa-computer-mouse"></i> </button>
+        </div>
+    </main>
+    <!--End of main-->
+
+    <!--About me-->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="title">
+                <h4>Who Am I</h4>
+                <h2>About Me</h2>
+            </div>
+            <div class="about-self">
+                <div class="left">
+                    <img src="../../static/main/im.jpg" alt="hans">
+                </div>
+                <div class="right">
+                    <h3>Hello, <strong>I'm Hans</strong></h3>
+                    <p>I'm Back-End Developer.</p>
+                    <p id="introduction" style="word-break:keep-all">I actually studied classical music. In order to learn how to repair the instrument in Germany, I changed my major. In the meantime I happened to learn programming with C and had a lot of fun. Since then I've been learning programming, especially 'Back-end'. Some people have told me that changing majors and learning programming are too foolhardy. However, I always stick with the quote that 'You miss 100% of the shots you don't take'. 
+                    </p>
+                    <div class="social">
+                        
+                        <a href="https://www.instagram.com/boky2al/" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.acmicpc.net/user/hans97" target="_blank">
+                            <i class="fa-solid fa-code"></i>
+                        </a>
+                        <a href="https://github.com/Hans97a" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End of About me-->
+
+    <!--Features-->
+    <section id="features" class="do">
+        <div class="container">
+            <div class="title">
+                <h4>Features</h4>
+                <h2>What I Do</h2>
+            </div>
+            <div class="do-me">
+                <div class="do-inner">
+                    <div class="icon">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Python</h3>
+                        <p>
+                            Django와 Django Rest Framework를 통해 백엔드를 공부하고 있습니다. 이 홈페이지도 Django로 제작되었습니다. 크롤링과 스크레이핑 과정을 통해 블로그에 새로운 기능을 파이썬을 이용해 구현할 예정입니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="do-inner">
+                    <div class="icon">
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Java script</h3>
+                        <p>
+                            1972년에 벨 연구소(Bell Labs)의 데니스 리치[5]가 만든 프로그래밍 언어. 원래 명칭은 그냥 'C'지만 한국에서는 표제어에서도 볼 수 있듯 'C언어'라는
+                            명칭으로 주로 부른다. 세계적으로 많이 쓰이는 프로그래밍 언어 중 하나이다
+                        </p>
+                    </div>
+                </div>
+                <div class="do-inner">
+                    <div class="icon">
+                        <i class="fa-solid fa-c"></i>
+                    </div>
+                    <div class="content">
+                        <h3>C</h3>
+                        <p>
+                            첫 프로그래밍을 C로 시작한 것은 행운이었습니다. 덕분에 다른 언어들의 문법을 익히는 데 거부감이 없었으며 구조적 이해를 빠르게 할 수 있었습니다. 추후 자료구조와 알고리즘도 C를 바탕으로 공부할 예정입니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End of Features-->
+
+    <!--Background-->
+    <div class="bg"></div>
+    <!--End of Background-->
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="title">
+                <h4>PORTFOLIOBACK</h4>
+                <h2>PortFolio</h2>
+            </div>
+            <div class="portfolio-me">
+                <div class="portfolio-inner">
+                    <img src="../../static/main/kream1444.jpeg" alt="샘플">
+                    <strong>WEB</strong>
+                    <h3>Kream Clone</h3>
+                </div>
+            </div>
+            <div class="portfolio-me">
+                <div class="portfolio-inner">
+                    <img src="../../static/main/kream1444.jpeg" alt="샘플">
+                    <strong>WEB</strong>
+                    <h3>Kream Clone</h3>
+                </div>
+            </div>
+            <div class="portfolio-me">
+                <div class="portfolio-inner">
+                    <img src="../../static/main/kream1444.jpeg" alt="샘플">
+                    <strong>WEB</strong>
+                    <h3>Kream Clone</h3>
+                </div>
+            </div>
+            <div class="portfolio-me">
+                <div class="portfolio-inner">
+                    <img src="../../static/main/kream1444.jpeg" alt="샘플">
+                    <strong>WEB</strong>
+                    <h3>Kream Clone</h3>
+                </div>
+            </div>
+            <div class="portfolio-me">
+                <div class="portfolio-inner">
+                    <img src="../../static/main/kream1444.jpeg" alt="샘플">
+                    <strong>WEB</strong>
+                    <h3>Kream Clone</h3>
+                </div>
+            </div>
+            <div class="portfolio-me">
+                <div class="portfolio-inner">
+                    <img src="../../static/main/naver.jpeg" alt="샘플">
+                    <strong>WEB</strong>
+                    <h3>Kream Clone</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Portfolio -->
+
+    <!--Contact-->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="title">
+                <h4>CONTACT</h4>
+                <h2>Contact with Me</h2>
+            </div>
+            <div class="contact-me">
+                <div class="left">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>phone</h3>
+                            <p>010-8346-2478</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>email</h3>
+                            <p>byby8992@naver.com</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>adress</h3>
+                            <p>Sangdo-ro, Dongjak-gu, Seoul, Republic of Korea</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="name">name</label>
+                            <input type="text" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email</label>
+                            <input type="text" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="msg">message</label>
+                            <textarea id="msg"></textarea>
+                        </div>
+                        <button type="submit">send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'main/index.js' %}"></script>
+    <script src="{% static 'main/lang.js' %}"></script>
+</body>
+
+</html>

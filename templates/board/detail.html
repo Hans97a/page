@@ -1,0 +1,12 @@
+{% extends 'board/base.html'%}
+{% block title%}
+{{post.title}}
+{% endblock title%}
+
+
+
+{% block main%}
+<h1>{{post.title}}</h1>
+<h2>{{post.created_at}}</h2>
+<h3>{{post.content}}</h3>
+{% endblock main%}
