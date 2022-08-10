@@ -1,18 +1,50 @@
 {% extends 'board/base.html' %}
-{% block title%}
+{% load static %}
+
+
+
+
+{% block title %}
 Board
-{% endblock title%}
+{% endblock title %}
 
-{% block main%}
-{% for p in posts%}
-<a href={{p.get_absolute_url}}>
-{{p.title}}
-</a>
-<br>
-{{p.content}}
-<br>
-{{p.created_at}}
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'board/board_list.css'%}" />
+{% endblock css%}
 
-<br>
-{% endfor%}
-{% endblock main%}
+{% block main %}
+
+<main id="main">
+    <div class="container">
+        <div class="post_list">
+            <ul class="list_upper">
+                <li>No.</li>
+                <li style="padding-right: 10px;">Title</li>
+                <li style="padding-right: 10px;">Author</li>
+                <li style="padding-right: 20px">Date</li>
+            </ul>
+            {% if posts%}
+            <div class="list_under">
+                {% for post in posts %}
+                <ul class="list_contents">
+                    <a href="{{post.get_absolute_url}}">
+                        
+                        <li>{{ forloop.revcounter }}</li>
+                        <li style="font-weight: 900">{{post.title}}</li>
+                        
+                        <li>{{post.author}}</li>
+                        <li>{{post.created_at.year}}.{{post.created_at.month}}.{{post.created_at.day}}</li>
+                    </a>
+                </ul>
+                {% endfor %}
+                {% else %}
+                <p style="text-align:center">게시글이 없습니다.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+
+
+{% endblock main %}

@@ -17,8 +17,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--cssfile link for django-->
+    {% block css%}{% endblock css%}
+    <link rel="stylesheet" type="text/css" href="{% static 'media.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'header.css'%}" />
 
-    <link rel="stylesheet" type="text/css" href="{% static 'main/index.css'%}" />
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -40,12 +43,6 @@
             <h1><button data-animation-scroll="true" data-target="#main"><a href="/">Hans</a></button></h1>
             <nav>
                 <ul>
-                    {% comment %} <li><button id="ko" onfocus="">
-                        <img src="../../static/main/korea.png" alt="english" style="height:16px; width:16px; border-radius:8px" /></button></li>
-                    <li><img src="../../static/main/english.png" alt="english"  /></li>
-                    <li><img src="../../static/main/german.png" alt="german"  /></li>
-                    <li>ㅣ</li> {% endcomment %}
-                    
                     <li><button data-animation-scroll="true" data-target="#about"><a href="/">About</a></button></li>
                     <li><button data-animation-scroll="true" data-target="#features"><a href="/">Features</a></button></li>
                     <li><button data-animation-scroll="true" data-target="#portfolio"><a href="/">Portfolio</a></button></li>
@@ -61,7 +58,5 @@
 
 
 
-    <script src="{% static 'main/index.js' %}"></script>
-    <script src="{% static 'main/lang.js' %}"></script>
 </body>
 </html>

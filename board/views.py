@@ -18,6 +18,7 @@ class board(ListView):
     context_object_name = 'posts'
     paginate_by = 10
     ordering = ["-created_at"]
+    paginate_orphans = 2
 
 
 class detail(DetailView):

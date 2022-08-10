@@ -1,0 +1,70 @@
+
+@media screen and (max-width:992px){
+    html{
+        font-size:14px
+    }
+    main .container{
+        width:768px;
+    }
+    section .portfolio-me .portfolio-inner{
+        width:100%;
+    }
+
+    section .about-self .right{
+        width:auto;
+    }
+}
+
+@media screen and (max-width:768px){
+    html{
+        font-size:13px
+    }
+
+    main .container{
+        width:576px;
+    }
+
+    section .container{
+        width:400px;
+    }
+
+    section .do-me .do-inner{
+        width:100%;
+        margin-right:0;
+    }
+
+    section .about-self .right{
+        width:auto;
+    }
+}
+@media screen and (max-width:576px){
+    html{
+        font-size:12px;
+    }
+    main .container{
+        width:400px;
+    }
+    section .container{
+        width:360px;
+    }
+    section .about-self .right{
+        width:auto;
+    }
+}
+@media screen and (max-width:400px){
+    html{
+        font-size:11px;
+    }
+    main .container{
+        width:320px;
+    }
+    section .container{
+        width:320px;
+    }
+    main h4{
+        font-size:1.5rem;
+    }
+    section .title h2{
+        font-size:3rem;
+    }
+}

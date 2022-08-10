@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'board.apps.BoardConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -115,7 +116,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-USE_TZ = False
+# USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -126,7 +127,10 @@ STATICFILES_DIRS = [
 ]
 
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL= 'users.User'
