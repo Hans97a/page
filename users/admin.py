@@ -11,6 +11,7 @@ class CustomUserAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "nickname",
+                    "image",
                 )
             },
         ),

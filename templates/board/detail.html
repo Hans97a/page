@@ -1,12 +1,47 @@
 {% extends 'board/base.html'%}
+{% load static %}
 {% block title%}
 {{post.title}}
 {% endblock title%}
 
 
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'board/board_detail.css'%}" />
+{% endblock css%}
+
+
 
 {% block main%}
-<h1>{{post.title}}</h1>
-<h2>{{post.created_at}}</h2>
-<h3>{{post.content}}</h3>
+<main>
+    <div class="container">
+        <div class="post_detail">
+            <div class="post">
+                <div class="post_title">
+                    <p class="title">
+                        {{post.title}}
+                    </p>
+                    <div class="profile">
+                        <img src="{{post.author.image.url}}" alt="프로필 사진"/>
+                        <p class="author">{{post.author}}</p>
+                        <p class="date">
+                            {% if post.updated_at %}
+                            · {{post.updated_at.year}}.{{post.updated_at.month}}.{{post.updated_at.day}}
+                            {% else %}
+                            · {{post.created_at.year}}.{{post.created_at.month}}.{{post.created_at.day}}
+                            {% endif%}
+                        </p>
+                    </div>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="post_content">
+                    <p>
+                        {{post.content}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</main>
 {% endblock main%}

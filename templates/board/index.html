@@ -15,16 +15,41 @@ Board
 {% block main %}
 
 <main id="main">
+    
     <div class="container">
         <div class="post_list">
             <ul class="list_upper">
                 <li>No.</li>
                 <li style="padding-right: 10px;">Title</li>
-                <li style="padding-right: 10px;">Author</li>
+                <li style="padding-right: 0px;">Author</li>
                 <li style="padding-right: 20px">Date</li>
             </ul>
-            {% if posts%}
+
+
+
+            {% if results %}
             <div class="list_under">
+                {% for post in results %}
+                <ul class="list_contents">
+                    <a href="{{post.get_absolute_url}}">
+                        
+                        <li>{{ forloop.revcounter }}</li>
+                        <li style="font-weight: 900">{{post.title}}</li>
+                        
+                        <li>{{post.author}}</li>
+                        <li>{{post.created_at.year}}.{{post.created_at.month}}.{{post.created_at.day}}</li>
+                    </a>
+                </ul>
+                {% endfor %}
+            </div>
+            
+            
+
+
+            {% else %}
+
+            <div class="list_under">
+            
                 {% for post in posts %}
                 <ul class="list_contents">
                     <a href="{{post.get_absolute_url}}">
@@ -37,11 +62,47 @@ Board
                     </a>
                 </ul>
                 {% endfor %}
-                {% else %}
-                <p style="text-align:center">게시글이 없습니다.</p>
             </div>
-            {% endif %}
+            {% endif %}  
+            
         </div>
+    </div>
+
+
+
+    <div class="pages">
+        {% if page_obj.has_previous%}
+        <a href="?page={{page_obj.number|add:'-1'}}"><i class="fa-solid fa-angle-left"></i></a>
+        {% else %}
+        <button disabled></button>
+        {% endif%}
+
+        {% for index in pagelist %}
+        {% if index == page_obj.number %}
+        <li class="page-item active">
+        <span class="page-link">{{ index }}</span>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ index }}">{{ index }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+
+        {% if page_obj.has_next %}
+        <a href="?page={{page_obj.number|add:'1'}}"><i class="fa-solid fa-angle-right"></i></a>
+        {% else %}
+        <button disabled></button>
+        {% endif %}
+    </div>
+    <div class="search">
+        <form method="get" action="{% url 'board:index' %}">
+            <input name="keyword" type="search" placeholder="제목, 내용 검색" {% if keyword%}value="{{keyword}}"{% endif %} />
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
     </div>
 </main>
 

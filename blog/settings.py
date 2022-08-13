@@ -116,7 +116,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-# USE_TZ = False
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -134,3 +134,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL= 'users.User'
+
+MEDIA_ROOT= BASE_DIR / 'uploads'
+MEDIA_URL= '/media/'

@@ -19,16 +19,12 @@ li{
 
 main{
     width:100%;
-    height:100vh;
+    height:70vh;
     background-color: rgb(255, 255, 255);
-    display:flex;
-    /* justify-content: center; */
-    /* align-items:center; */
-    /* text-align:center; */
 }
 
 .post_list {
-    margin: 10% auto;
+    margin: 10% auto 2% auto;
     width: 90%;
     height: 60%;
     border: 1px solid rgb(31, 31, 31);
@@ -50,3 +46,50 @@ main{
 .list_contents:nth-child(2n){
     background-color: rgb(221, 221, 221);
 }
+
+.pages {
+    display: flex;
+    justify-content: center;
+    
+}
+.pages a{
+    margin-right: 5px;
+    
+}
+/* .pages a:hover{
+    border: 1px solid rgb(231, 231, 231);    padding: 1px 3px;
+} UI에러 */
+
+.pages span{
+    margin-right: 5px;
+    padding: 1px 3px;
+    border: 1px solid rgb(197, 197, 197);
+}
+.pages button{
+    margin-right: 5px;
+    padding: 1px 3px;
+    visibility: hidden;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.search button{
+    border:0;
+    outline:0;
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+.search form{
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.search input[type=search] {
+    border:0;
+    margin-left:2px;
+} 
