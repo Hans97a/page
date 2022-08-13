@@ -37,21 +37,7 @@
 </head>
 
 <body>
-    <!--Header-->
-    <header>
-        <div class="container">
-            <h1><button data-animation-scroll="true" data-target="#main"><a href="/">Hans</a></button></h1>
-            <nav>
-                <ul>
-                    <li><button data-animation-scroll="true" data-target="#about"><a href="/">About</a></button></li>
-                    <li><button data-animation-scroll="true" data-target="#features"><a href="/">Features</a></button></li>
-                    <li><button data-animation-scroll="true" data-target="#portfolio"><a href="/">Portfolio</a></button></li>
-                    <li><button data-animation-scroll="true" data-target="#contact"><a href="/">Contact</a></button></li>
-                    <li><button><a href="/board/">Board</a></button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    {% include 'header.html'%}
     <!--End of header-->
     {% block main %}
     {% endblock main %}

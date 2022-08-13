@@ -1,0 +1,17 @@
+<!--Header with user login -->
+<header>
+    <div class="container">
+        <h1><button data-animation-scroll="true" data-target="#main"><a href="/">Hans</a></button></h1>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                <li><button data-animation-scroll="true" data-target="#about"><a href="{% url 'users:logout'%}">Logout</a></button></li>
+                {% else %}
+                <li><button data-animation-scroll="true" data-target="#about"><a href="{% url 'users:login'%}">Login</a></button></li>
+                {% endif %}
+                <li><button><a href="/board/">Board</a></button></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!--End of header-->

@@ -15,3 +15,8 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return f'{self.pk}'
+
+
+class PostImage(models.Model):
+    post=models.ForeignKey('board.Post', on_delete=models.CASCADE)
+    image=models.ImageField(upload_to='post/%Y/%m/%d')

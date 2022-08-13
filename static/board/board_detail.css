@@ -4,9 +4,10 @@ main{
     background-color: rgb(255, 255, 255);
 }
 
-.container{
+main .container{
     width:1140px;
     margin:0 auto;
+    padding-bottom: 5%;
 }
 
 .post_detail {
@@ -60,9 +61,19 @@ main{
     color: rgb(204, 204, 204);
 }
 
-
-.post_content p{
+.post_content p.post_inhalt{
     word-wrap: break-word;
     word-break: keep-all;
     padding-bottom: 5%;
+}
+
+.post_content .post_image {
+    display: flex;
+    justify-content: center;
+
+    height:30rem;
+}
+
+.comment {
+    font-weight: bold;
 }

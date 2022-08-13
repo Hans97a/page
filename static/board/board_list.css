@@ -81,13 +81,16 @@ main{
     border:0;
     outline:0;
     background-color: white;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    margin-right: 3px;
 }
 
 .search form{
     border: 1px solid black;
     border-radius: 3px;
 }
+
+
 
 .search input[type=search] {
     border:0;

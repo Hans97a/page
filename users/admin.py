@@ -12,6 +12,8 @@ class CustomUserAdmin(admin.ModelAdmin):
                 "fields": (
                     "nickname",
                     "image",
+                    'phone_number',
+                    'personal_id',
                 )
             },
         ),

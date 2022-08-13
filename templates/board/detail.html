@@ -35,9 +35,23 @@
                 </div>
 
                 <div class="post_content">
-                    <p>
+                    {% if post.postimage_set.first %}
+                        <div class="post_image">
+                        <img src="{{post.postimage_set.first.image.url}}" />
+                        </div>
+                    {% endif %}
+
+                    <p class="post_inhalt" {% if post.postimage_set.first %}style="padding-top:5%;"{% endif %}>
                         {{post.content}}
                     </p>
+                    <div class="comment">
+                        <p>Comment</p>
+                        <div class="underline"></div>
+                        <form>
+
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
         </div>

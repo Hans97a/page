@@ -1,16 +1,12 @@
-{% extends 'users/base.html'%}
-
-
-{% block title%}
-Login
-{% endblock title%}
+{% extends 'users/base.html' %}
 
 {% block content %}
-    <form method="post" action="{% url 'users:login' %}">
+<form method="post" action="{% url 'users:signup' %}">
     {% csrf_token %}
+
     {% for field in form %}
     <p>
-        {{field}}
+        {{field.label}} : {{field}}
         {% if field.errors %}
             {% for error in field.errors %}
                 <span class="text-red-700 font-medium text-sm">{{error}}</span>
@@ -18,9 +14,8 @@ Login
         {% endif %}
     </p>
     {% endfor%}
-    <button type="submit">로그인</button>
-    </form>
 
-    
-<a href="{% url 'users:signup' %}">회원가입</a>
-{% endblock content %}
+
+    <button type="submit">회원가입</button>
+</form>
+{% endblock content%}
