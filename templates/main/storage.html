@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storage - Hans</title>
+
+    <!--부트스트랩 링크코드-->
+    <!-- <link rel="stylesheet" href="{% static 'main/bootstrap.min.css' %}" media="screen"> -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--cssfile link for django-->
+    <link rel="stylesheet" type="text/css" href="{% static 'media.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'header.css'%}" />
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        .poppins {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .varela {
+            font-family: "Varela Round", sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    {% include 'header.html'%}
+    <!--End of header-->
+    {% if contacts %}
+    {% for contact in contacts%}
+    <h1>{{contact.name}}</h1>
+    <h1>{{contact.contact}}</h1>
+    <h1>{{contact.content}}</h1>
+    <h1>{{contact.created_a}}</h1>
+    {% endfor%}
+    {% else %}
+    <h1>메시지가 없습니다.</h1>
+    {% endif %}
+
+
+
+</body>
+</html>

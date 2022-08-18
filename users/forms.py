@@ -1,4 +1,3 @@
-from unittest.util import _MAX_LENGTH
 from django import forms
 from . import models
 from django.contrib.auth.password_validation import validate_password
@@ -27,18 +26,23 @@ class LoginForm(forms.Form):
 class SignUpForm(forms.ModelForm):
     class Meta:
         model = models.User
-        fields = ('nickname', 'phone_number', 'personal_id', 'username', )
+        fields = ('real_name', 'nickname', 'personal_id', 'phone_number' )
     password = forms.CharField(max_length=20, required=True, widget=forms.PasswordInput(attrs={'placeholder': '비밀번호'}))
     password1 = forms.CharField(max_length=20, required=True, widget=forms.PasswordInput(attrs={'placeholder': '한번 더 입력해주세요'}))
 
+    def clean_real_name(self):
+        real_name = self.cleaned_data.get('real_name') #이름 에러처리
+        return real_name
+    
     def clean_personal_id(self):
-        personal_id = self.cleaned_data.get('personal_id')
+        personal_id=self.cleaned_data.get('personal_id')
         try:
             models.User.objects.get(personal_id=personal_id)
-            raise forms.ValidationError('이미 가입된 아이디입니다.')
+            raise forms.ValidationError('이미 존재하는 아이디입니다.')
         except models.User.DoesNotExist:
             return personal_id
-    def clean_password1(self):
+        
+    def clean_password(self):
         password=self.cleaned_data.get('password')
         password1=self.cleaned_data.get('password1')
         
@@ -60,15 +64,17 @@ class SignUpForm(forms.ModelForm):
         nickname=self.cleaned_data.get('nickname')
         try:
             models.User.objects.get(nickname__iexact=nickname)
-            raise forms.ValidationError('존재하는 닉네임입니다.')
+            raise forms.ValidationError('이미 존재하는 닉네임입니다.')
         except models.User.DoesNotExist:
             return nickname
         
     def save(self, *args, **kwargs):
         user=super().save(commit=False)
-        user.username=self.cleaned_data.get('username')
+        # user.personal_id=self.cleaned_data.get('personal_id')
+        # user.username=self.cleaned_data.get('username') # 필드에서 가져와서 입력받은 경우 생략가능
+        personal_id=self.cleaned_data.get('personal_id')
+        user.username= personal_id
         password=self.cleaned_data.get('password')
         user.set_password(password)
-        user.nickname=self.cleaned_data.get('nickname')
-        user.personal_id=self.cleaned_data.get('personal_id')
         user.save()
+        

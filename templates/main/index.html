@@ -87,6 +87,16 @@
                     <p>I'm Back-End Developer.</p>
                     <p id="introduction" style="word-break:keep-all">I actually studied classical music. In order to learn how to repair the instrument in Germany, I changed my major. In the meantime I happened to learn programming with C and had a lot of fun. Since then I've been learning programming, especially 'Back-end'. Some people have told me that changing majors and learning programming are too foolhardy. However, I always stick with the quote that 'You miss 100% of the shots you don't take'. 
                     </p>
+                    <div class="lang">
+                        {% comment %} <ul>
+                            <li><button id="ko" onfocus="">
+                        <img src="../../static/main/korea.png" alt="english" style="height:16px; width:16px; border-radius:8px" /></button></li>
+                    <li><img src="../../static/main/english.png" alt="english"  /></li>
+                    <li><img src="../../static/main/german.png" alt="german"  /></li>
+                        </ul> {% endcomment %}
+                    </div>
+
+                    
                     <div class="social">
                         
                         <a href="https://www.instagram.com/boky2al/" target="_blank">
@@ -215,7 +225,9 @@
         <div class="container">
             <div class="title">
                 <h4>CONTACT</h4>
-                <h2>Contact with Me</h2>
+                <h2>Contact with Me</h2>{% if user.is_superuser%}
+                <a href="storage/" style="color: red;">보관함</a>
+                {%endif%}
             </div>
             <div class="contact-me">
                 <div class="left">
@@ -249,18 +261,19 @@
                 </div>
 
                 <div class="right">
-                    <form action="#">
+                    <form method='post' action="{% url 'main:index' %}">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="name">name</label>
-                            <input type="text" id="name">
+                            <input type="text" name="name" id="name">
                         </div>
                         <div class="form-group">
-                            <label for="email">email</label>
-                            <input type="text" id="email">
+                            <label for="contact">contact</label>
+                            <input type="text" name="contact" id="contact">
                         </div>
                         <div class="form-group">
-                            <label for="msg">message</label>
-                            <textarea id="msg"></textarea>
+                            <label for="content">message</label>
+                            <textarea name="content" id="content" ></textarea>
                         </div>
                         <button type="submit">send</button>
                     </form>

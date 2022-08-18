@@ -13,7 +13,7 @@ class CustomUserAdmin(admin.ModelAdmin):
                     "nickname",
                     "image",
                     'phone_number',
-                    'personal_id',
+                    'real_name',
                 )
             },
         ),

@@ -386,6 +386,7 @@ section.contact .contact-me .right button{
     background-color: #f78b00;
     border:none;
     color:white;
+    cursor: pointer;
 }
 
 @media screen and (max-width:1140px){

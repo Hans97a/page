@@ -50,20 +50,23 @@ main{
 .pages {
     display: flex;
     justify-content: center;
-    
+    gap: 10px;
 }
 .pages a{
     margin-right: 5px;
     
 }
-/* .pages a:hover{
-    border: 1px solid rgb(231, 231, 231);    padding: 1px 3px;
-} UI에러 */
+.pages a:hover{ /* */
+    border: 1px solid rgb(231, 231, 231);    
+    padding: 1px 3px;
+    box-sizing: border-box;
+} 
 
 .pages span{
     margin-right: 5px;
     padding: 1px 3px;
     border: 1px solid rgb(197, 197, 197);
+    box-sizing: border-box;
 }
 .pages button{
     margin-right: 5px;

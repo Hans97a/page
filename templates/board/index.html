@@ -27,9 +27,9 @@ Board
 
 
 
-            {% if results %}
+            {% if posts %}
             <div class="list_under">
-                {% for post in results %}
+                {% for post in posts %}
                 <ul class="list_contents">
                     <a href="{{post.get_absolute_url}}">
                         
@@ -50,18 +50,11 @@ Board
 
             <div class="list_under">
             
-                {% for post in posts %}
-                <ul class="list_contents">
-                    <a href="{{post.get_absolute_url}}">
-                        
-                        <li>{{ forloop.revcounter }}</li>
-                        <li style="font-weight: 900">{{post.title}}</li>
-                        
-                        <li>{{post.author}}</li>
-                        <li>{{post.created_at.year}}.{{post.created_at.month}}.{{post.created_at.day}}</li>
-                    </a>
+                
+                <ul class="list_contents" style="display: flex; justify-content: center;">
+                    <li style="margin: 5% auto 5% auto">게시물이 없습니다.</li>
                 </ul>
-                {% endfor %}
+                
             </div>
             {% endif %}  
             
