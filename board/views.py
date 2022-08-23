@@ -11,7 +11,7 @@ class board(ListView): # board 게시판의 메인 페이지
     model = Post
     template_name = 'board/index.html'
     context_object_name = 'posts'
-    paginate_by = 10
+    paginate_by = 4
     ordering = ["-created_at"]
     #paginate_queryset
     
@@ -21,6 +21,9 @@ class board(ListView): # board 게시판의 메인 페이지
         paginator = page.paginator
         pagelist = paginator.get_elided_page_range(page.number, on_each_side=3, on_ends=0)
         context['pagelist'] = pagelist
+        keyword=self.request.GET.get('keyword', None)
+        if keyword is not None:
+            context['keyword']=keyword
         return context
     
     def get_queryset(self):
@@ -40,7 +43,6 @@ class board(ListView): # board 게시판의 메인 페이지
             else:
                 results=models.Post.objects.all().order_by('-created_at')
             return results
-        
         
     def paginate_queryset(self, queryset, page_size): #get_page / page
 
@@ -69,3 +71,4 @@ class board(ListView): # board 게시판의 메인 페이지
 class detail(DetailView):
     model = Post
     template_name = 'board/detail.html'
+    

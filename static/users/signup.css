@@ -8,22 +8,17 @@ main .container{
     width:1140px;
     margin:0 auto;
     padding-bottom: 5%;
+    
 }
-
-.signup {
-    margin: 10% auto 2% auto;
-    width: 60%;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 2px 4px 16px 1px rgba(0,0,0,0.47);
+.temp{
+    margin-left:35%;
 }
 
 .alert {
     width:60%;
-    margin-bottom: 5%;
-    margin-left:20%;
+    margin-top:2%;
     background-color: rgb(255, 210, 206);
-    border-radius: 30px;
+    border-radius: 4%;
 }
 
 .alert .error {
@@ -40,9 +35,52 @@ main .container{
 }
 
 .error strong {
-    width:20%;
     font-size: 1.1rem;
 }
 .error .error_mag li{
+    font-size: 1rem;
+}
+
+
+.signup_form .form_label {
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.signup_form .form_label p {
+    display: inline;
+    color: red;
+}
+
+.signup {
+    margin-top:3%;
+}
+
+.form_input {
+    padding: 0.425rem;
     width:60%;
+    margin-top:0.5%;
+    outline:none;
+    border:1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form_input:focus{
+    outline:none;
+    border:1px solid #3292f8;
+    box-shadow: 0 0 5px;
+}
+
+.signup_form {
+    margin-top: 2%;
+}
+
+form button {
+    width:60%;
+    margin-top:2%;
+    background-color: #ecb7b7;
+    border: none;
+    cursor:pointer;
+    border-radius: 5px;
+    padding: 0.425rem;
 }

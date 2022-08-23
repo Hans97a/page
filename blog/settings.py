@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'board.apps.BoardConfig',
     'users.apps.UsersConfig',
+    'markdownx',
 ]
 
 MIDDLEWARE = [

@@ -5,53 +5,59 @@
 <link rel="stylesheet" type="text/css" href="{% static 'users/signup.css'%}" />
 {% endblock css%}
 
+{% block title%}
+Signup
+{% endblock title%}
 
 {% block content %}
 <main>
     <div class="container">
-        <div class="signup">
-            
-            <form method="post" action="{% url 'users:signup' %}">
-                {% csrf_token %}
-            {% if form.errors%}
-            <div class="alert">
-                {% for field in form%}
-                {% if field.errors %}
-                <div class="error">
-                    <strong>{{field.label}}</strong>
-                    <p class="error_msg">{{field.errors}}</p>
-                </div>
-                {% endif %}
-                {% endfor %}
+        <div class="temp">
+        <h1 style="font-weight: bold; margin-top:2%; color:#717373">회원가입</h1>
+        <form method="post" action="{% url 'users:signup' %}">
+            {% csrf_token %}
+        {% if form.errors%}
+        <div class="alert">
+            {% for field in form%}
+            {% if field.errors %}
+            <div class="error">
+                <strong>{{field.label}}</strong>
+                <p class="error_msg">{{field.errors}}</p>
             </div>
             {% endif %}
-            <div class="signup_form">
-                <label for="personal_id" class="form_label">아이디</label>
-                <input type="text" class="form_input" name="personal_id" id="personal_id" value="{{ form.personal_id.value|default_if_none:''}}">
-            </div>
-            <div class="signup_form">
-                <label for="password" class="form_label">비밀번호</label>
-                <input type="password" class="form_input" name="password" id="password" placeholder="비밀번호를 입력해주세요.">
-            </div>
-            <div class="signup_form">
-                <label for="password1" class="form_label">ㅇ</label>
-                <input type="password" class="form_input" name="password1" id="password1" placeholder="비밀번호를 한번 더 입력해주세요.">
-            </div>
-            <div class="signup_form">
-                <label for="real_name" class="form_label">이름</label>
-                <input type="text" class="form_input" name="real_name" id="real_name" value="{{ form.real_name.value|default_if_none:''}}">
-            </div>
-            <div class="signup_form">
-                <label for="nickname" class="form_label">닉네임</label>
-                <input type="text" maxlength="20" class="form_input" name="nickname" id="nickname" value="{{ form.nickname.value|default_if_none:''}}">
-            </div>
-            <div class="signup_form">
-                <label for="phone_number" class="form_label">휴대폰 번호</label>
-                <input type="tel" maxlength="11" placeholder=" - 를 제외한 11자리" class="form_input" name="phone_number" id="phone_number" value="{{ form.phone_number.value|default_if_none:''}}" >
-            </div>
-            <button type="submit">회원가입</button>
-            </form>
+            {% endfor %}
         </div>
+        {% endif %}
+        
+        <div class="signup">
+        <div class="signup_form">
+            <label for="personal_id" class="form_label">아이디 <p>*</p></label>
+            <input type="text" class="form_input" name="personal_id" id="personal_id" value="{{ form.personal_id.value|default_if_none:''}}">
+        </div>
+        <div class="signup_form">
+            <label for="password" class="form_label">비밀번호 <p>*</p></label>
+            <input type="password" class="form_input" placeholder="비밀번호를 입력해주세요." name="password" id="password" >
+        </div>
+        <div class="signup_form" style="margin-top:0.5%">
+            <label for="password1" class="form_label"></label>
+            <input type="password" class="form_input"  placeholder="비밀번호를 한번 더 입력해주세요." name="password1" id="password1">
+        </div>
+        <div class="signup_form">
+            <label for="real_name" class="form_label">이름<p>*</p></label>
+            <input type="text" class="form_input" name="real_name" id="real_name" value="{{ form.real_name.value|default_if_none:''}}">
+        </div>
+        <div class="signup_form">
+            <label for="nickname" class="form_label">닉네임<p>*</p></label>
+            <input type="text" maxlength="20" class="form_input" name="nickname" id="nickname" value="{{ form.nickname.value|default_if_none:''}}">
+        </div>
+        <div class="signup_form">
+            <label for="phone_number" class="form_label">휴대폰 번호<p>*</p></label>
+            <input type="tel" maxlength="11" placeholder=" - 를 제외한 11자리" class="form_input" name="phone_number" id="phone_number" value="{{ form.phone_number.value|default_if_none:''}}" >
+        </div>
+        <button type="submit">가입하기</button>
+        </form>
+        </div>
+    </div>
     </div>
 </main>
 {% endblock content%}

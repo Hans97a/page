@@ -41,16 +41,55 @@
                         </div>
                     {% endif %}
 
-                    <p class="post_inhalt" {% if post.postimage_set.first %}style="padding-top:5%;"{% endif %}>
-                        {{post.content}}
-                    </p>
+                    <div class="post_inhalt" {% if post.postimage_set.first %}style="padding-top:5%;"{% endif %}>
+                        {{post.get_content_markdown | safe }}
+                    </div>
+                    
                     <div class="comment">
-                        <p>Comment</p>
+                        <p class="comment_title">Comment</p>
                         <div class="underline"></div>
-                        <form>
 
-                        </form>
+
+                        {% if post.comment_set.exists %}
+                        {% for comment in post.comment_set.iterator %}
+                        <div class="user_comment" 
+                        {% if forloop.last is True %} style="margin-top:3%; padding-bottom: 3%;"
+                        {% endif %}>
                         
+                        {% comment %} <div class="comment_right">
+                            <img src="{{comment.author.image.url}}" style="width: 2.5rem; height: 2.5rem; border-radius: 50%;">
+                            <div class="comment_up">
+                                <p class="nickname">{{comment.author.nickname}}<p>
+                                <p class="comment_date">{{comment.created_at.year}}.{{comment.created_at.month}}.{{comment.created_at.day}}</p>
+                            </div>
+                                <p class="comment_inhalt">{{comment.content | linebreaks}}</p>
+                            </div>
+                        </div>  {% endcomment %}
+
+                        <div class="user_info">
+                            <img src="{{comment.author.image.url}}" style="width: 2.5rem; height: 2.5rem; border-radius: 50%;">
+                            <p class="nickname">{{comment.author.nickname}}<p>
+                            <p class="comment_date" style="display:block;">{{comment.created_at.year}}.{{comment.created_at.month}}.{{comment.created_at.day}}</p>
+                        </div>
+                        
+                        <div class="comment_content">
+                            <p class="comment_inhalt">{{comment.content | linebreaks}}</p>
+                        </div>
+                        
+
+                        {% if forloop.last is not True%}
+                        <div class="underline"></div>
+                        {% endif %}
+
+                        {% endfor %}
+                        {% endif %}
+
+                        {% if user.is_authenticated%}
+                        <form method="post" action="{url 'board:detail'}">
+                            <input type="textarea" placeholder="댓글을 작성해주세요" name="comment" id="comment"/>
+                            
+                        </form>
+                        {% endif%}
                     </div>
                 </div>
             </div>

@@ -46,8 +46,8 @@ main .container{
 }
 
 .profile img{
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
 }
 
@@ -58,10 +58,10 @@ main .container{
 
 .profile .date {
     margin-left:1%;
-    color: rgb(204, 204, 204);
+    color: rgb(170, 170, 170);
 }
 
-.post_content p.post_inhalt{
+.post_content .post_inhalt{
     word-wrap: break-word;
     word-break: keep-all;
     padding-bottom: 5%;
@@ -70,10 +70,56 @@ main .container{
 .post_content .post_image {
     display: flex;
     justify-content: center;
-
     height:30rem;
 }
 
-.comment {
+.comment_title {
     font-weight: bold;
+}
+
+
+.user_info {
+    display: flex;
+    align-items: center;
+}
+
+.nickname{
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-left:1%;
+}
+
+.comment_date {
+    padding-top:0.7%;
+    font-size: 0.8rem;
+    margin-left: 1%;
+    color:rgb(170, 170, 170)
+}
+
+.comment_content{
+    margin-left: 6%;
+}
+
+
+
+@media screen and (max-width:992px){
+    .comment_content{
+        margin-left:7%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .comment_content{
+        margin-left:9%;
+    }
+}
+@media screen and (max-width:576px){
+    .comment_content{
+        margin-left:11%;
+    }
+}
+@media screen and (max-width:420px){
+    .comment_content{
+        margin-left:13%;
+    }
 }

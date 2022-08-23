@@ -28,7 +28,8 @@ class SignUpForm(forms.ModelForm):
         model = models.User
         fields = ('real_name', 'nickname', 'personal_id', 'phone_number' )
     password = forms.CharField(max_length=20, required=True, widget=forms.PasswordInput(attrs={'placeholder': '비밀번호'}))
-    password1 = forms.CharField(max_length=20, required=True, widget=forms.PasswordInput(attrs={'placeholder': '한번 더 입력해주세요'}))
+    password1 = forms.CharField(max_length=20, required=True, label='비밀번호')
+
 
     def clean_real_name(self):
         real_name = self.cleaned_data.get('real_name') #이름 에러처리
@@ -42,7 +43,7 @@ class SignUpForm(forms.ModelForm):
         except models.User.DoesNotExist:
             return personal_id
         
-    def clean_password(self):
+    def clean_password1(self):
         password=self.cleaned_data.get('password')
         password1=self.cleaned_data.get('password1')
         
@@ -77,4 +78,3 @@ class SignUpForm(forms.ModelForm):
         password=self.cleaned_data.get('password')
         user.set_password(password)
         user.save()
-        

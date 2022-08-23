@@ -17,51 +17,54 @@ Board
 <main id="main">
     
     <div class="container">
-        <div class="post_list">
-            <ul class="list_upper">
-                <li>No.</li>
-                <li style="padding-right: 10px;">Title</li>
-                <li style="padding-right: 0px;">Author</li>
-                <li style="padding-right: 20px">Date</li>
-            </ul>
-
-
-
-            {% if posts %}
-            <div class="list_under">
-                {% for post in posts %}
-                <ul class="list_contents">
-                    <a href="{{post.get_absolute_url}}">
-                        
-                        <li>{{ forloop.revcounter }}</li>
-                        <li style="font-weight: 900">{{post.title}}</li>
-                        
-                        <li>{{post.author}}</li>
-                        <li>{{post.created_at.year}}.{{post.created_at.month}}.{{post.created_at.day}}</li>
-                    </a>
-                </ul>
-                {% endfor %}
+        <div class="posts">
+            {% if posts%}
+            {% for post in posts %}
+            
+            <div class="post_list">
+                {% if post.postimage_set.first %}
+                <a href="{{post.get_absolute_url}}">
+                    <img src="{{post.postimage_set.first.image.url}}" alt="게시글 사진" class="post_image"/>
+                </a>
+                {% endif %}
+                <div class="post">
+                    <div class="post_user">
+                        <img src="{{post.author.image.url}}" alt="프로필 사진" style="width: 2rem; height: 2rem; border-radius: 50%"/>
+                        <p>
+                            {{post.author}}
+                        </p>
+                        <p class="time">{{post.created_at.year}}.{{post.created_at.month}}.{{post.created_at.day}}</p>
+                    </div>
+                    <div class="post_detail">
+                        <p class="post_title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></p>
+                        <p class="post_inhalt" {% if post.postimage_set.first %} style="width:87%;" {% endif %} >
+                            <a href="{{post.get_absolute_url}}">{{post.content}}</a></p>
+                    </div>
+                </div>
+                {% if forloop.last is not True %}
+                <div class="underline"></div>
+                {% else %}
+                <div style="padding-bottom:2%;"></div>
+                {% endif %}
             </div>
+            {% endfor %}
             
-            
-
-
             {% else %}
-
-            <div class="list_under">
-            
-                
-                <ul class="list_contents" style="display: flex; justify-content: center;">
-                    <li style="margin: 5% auto 5% auto">게시물이 없습니다.</li>
-                </ul>
-                
+            <div class="post_list" style="display:flex; justify-content: center; padding-bottom:2%;">
+                <p class="search_result"><p style="color:red;">'{{ keyword|default_if_none:''}}'</p>
+                <p>에 대한 검색결과가 없습니다.   <i class="fa-solid fa-face-sad-tear"></i></p>
             </div>
-            {% endif %}  
-            
+
+
+
+            {% endif%}
         </div>
+        
+
+
     </div>
 
-
+    
 
     <div class="pages">
         {% if page_obj.has_previous%}
@@ -91,7 +94,7 @@ Board
     </div>
     <div class="search">
         <form method="get" action="{% url 'board:index' %}">
-            <input name="keyword" type="search" placeholder="제목, 내용 검색" {% if keyword%}value="{{keyword}}"{% endif %} />
+            <input type="search" placeholder="제목, 내용 검색" name="keyword" id="keyword" value="{{ keyword|default_if_none:''}}" />
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>

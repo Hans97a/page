@@ -1,29 +1,42 @@
 {% extends 'users/base.html'%}
+{% load static %}
 
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'users/login.css'%}" />
+{% endblock css%}
 
 {% block title%}
 Login
 {% endblock title%}
 
 {% block content %}
-    <form method="post" action="{% url 'users:login' %}">
-    {% csrf_token %}
-    {% for field in form %}
-    <p>
-        {{field}}
-        {% if field.errors %}
-            {% for error in field.errors %}
-                <span class="text-red-700 font-medium text-sm">{{error}}</span>
-            {% endfor %}
-        {% endif %}
-    </p>
-    {% endfor%}
-    <button type="submit">로그인</button>
-    </form>
-
-    
-
-
-    
-<a href="{% url 'users:signup' %}">회원가입</a>
+<main>
+    <div class="container">
+        <div class="login">
+            <div class="login_text">
+                <h1>로그인</h1>
+            </div>
+            <form method="post" action="{% url 'users:login' %}">
+                {% csrf_token %}
+                <div class="login_form">
+                    <label for="personal_id" class="form_label"></label>
+                    <input type="text" class="form_input" name="personal_id" id="personal_id" value="{{ form.personal_id.value|default_if_none:''}}" placeholder="아이디를 입력해주세요">
+                </div>
+                <div class="login_form">
+                    <label for="password" class="form_label"></label>
+                    <input type="password" class="form_input" name="password" id="password" placeholder="비밀번호를 입력해주세요">
+                </div>
+                <div class="btn">
+                    <button type="submit">로그인</button>
+                </div>
+            </form>
+            
+            
+            <div class="signup">
+                <a href="{% url 'users:signup' %}">회원가입</a>
+                
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock content %}
