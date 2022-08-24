@@ -1,10 +1,11 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect, resolve_url
 from .models import Post
 from . import models, forms
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
 from django.core.paginator import InvalidPage, Paginator
 from django.http import Http404
+from django.core.exceptions import PermissionDenied
 # Create your views here.
 
 class board(ListView): # board 게시판의 메인 페이지
@@ -72,3 +73,26 @@ class detail(DetailView):
     model = Post
     template_name = 'board/detail.html'
     
+    def get_context_data(self, **kwargs):
+        context = super(detail, self).get_context_data()
+        context['comment']= forms.CommentForm
+        return context
+
+
+def comment(request, pk):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, pk=pk)
+        
+        if request.method =='POST':
+            comment_form = forms.CommentForm(request.POST)
+            print('&&&&&&&&', comment_form.errors)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.post = post
+                comment.author = request.user
+                comment.save()
+                return redirect('{}#comment_{}'.format(resolve_url('board:detail', pk), comment.pk))
+        else:
+            return redirect(post.get_absolute_url())
+    else:
+        raise PermissionDenied
