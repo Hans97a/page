@@ -1,11 +1,17 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect, resolve_url
 from .models import Post
 from . import models, forms
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView
 from django.db.models import Q
 from django.core.paginator import InvalidPage, Paginator
 from django.http import Http404
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy, reverse
+
+
+
+
 # Create your views here.
 
 class board(ListView): # board 게시판의 메인 페이지
@@ -85,14 +91,40 @@ def comment(request, pk):
         
         if request.method =='POST':
             comment_form = forms.CommentForm(request.POST)
-            print('&&&&&&&&', comment_form.errors)
-            if comment_form.is_valid():
+            check_form= request.POST.get('content', '')
+            if comment_form.is_valid() and check_form != '':
                 comment = comment_form.save(commit=False)
                 comment.post = post
                 comment.author = request.user
                 comment.save()
                 return redirect('{}#comment_{}'.format(resolve_url('board:detail', pk), comment.pk))
+            else:
+                return redirect(resolve_url('board:detail', pk))
         else:
-            return redirect(post.get_absolute_url())
+            return redirect(resolve_url('board:detail', pk))
+    else:
+        raise PermissionDenied
+
+
+
+class CommentUpdate(LoginRequiredMixin, UpdateView):
+    model = models.Comment
+    form_class = forms.CommentForm
+    success_url = '/'
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user == self.get_object().author:
+            return super(CommentUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
+        
+    def get_success_url(self):
+        return reverse('board:detail', kwargs={'pk': self.get_object().post.pk})
+    
+def comment_delete(request, pk):
+    comment = get_object_or_404(models.Comment, pk=pk)
+    post = comment.post
+    if request.user.is_authenticated and request.user == comment.author:
+        comment.delete()
+        return redirect(resolve_url('board:detail', post.pk))
     else:
         raise PermissionDenied

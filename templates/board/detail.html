@@ -21,7 +21,7 @@
                         {{post.title}}
                     </p>
                     <div class="profile">
-                        <img src="{{post.author.image.url}}" alt="프로필 사진"/>
+                        <img src="{{post.author.image.url}}" alt="프로필 사진" />
                         <p class="author">{{post.author}}</p>
                         <p class="date">
                             {% if post.updated_at %}
@@ -36,53 +36,83 @@
 
                 <div class="post_content">
                     {% if post.postimage_set.first %}
-                        <div class="post_image">
+                    <div class="post_image">
                         <img src="{{post.postimage_set.first.image.url}}" />
-                        </div>
+                    </div>
                     {% endif %}
 
-                    <div class="post_inhalt" {% if post.postimage_set.first %}style="padding-top:5%;"{% endif %}>
+                    <div class="post_inhalt" {% if post.postimage_set.first %}style="padding-top:5%;" {% endif %}>
                         {{post.get_content_markdown | safe }}
                     </div>
-                    
+
                     <div class="comment">
                         <p class="comment_title">Comment</p>
                         <div class="underline"></div>
                         {% if post.comment_set.exists %}
                         {% for comment in post.comment_set.iterator %}
-                        <div class="user_comment" 
-                        {% if forloop.last is True %} style="margin-top:3%; padding-bottom: 3%;"
-                        {% endif %} id="comment_{{comment.pk}}">
-                        <div class="user_info">
-                            <img src="{{comment.author.image.url}}" style="width: 2.5rem; height: 2.5rem; border-radius: 50%;">
-                            <p class="nickname">{{comment.author.nickname}}<p>
-                            <p class="comment_date" style="display:block;">{{comment.created_at.year}}.{{comment.created_at.month}}.{{comment.created_at.day}}</p>
+                        <div class="user_comment" {% if forloop.last is True %}
+                            style="margin-top:3%; padding-bottom: 3%;" {% endif %} id="comment_{{comment.pk}}">
+                            <div class="comment_up">
+                                <div class="user_info">
+                                    <img src="{{comment.author.image.url}}"
+                                        style="width: 2.5rem; height: 2.5rem; border-radius: 50%;">
+                                    <p class="nickname">{{comment.author.nickname}}
+                                    </p>
+                                    
+                                    {% if comment.created_at != comment.modified_at %}
+                                    <p class="comment_date">{{comment.modified_at.year}}.{{comment.modified_at.month}}.{{comment.modified_at.day}}  {{comment.modified_at.hour}}:{{comment.modified_at.minute}}  (modified)</p>
+                                    {% else %}
+                                    <p class="comment_date" style="display:block;">{{comment.created_at.year}}.{{comment.created_at.month}}.{{comment.created_at.day}}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="comment_edit">
+                                    {% if user.is_authenticated and comment.author == user %}
+                                    <a href="{% url 'board:comment_update' comment.pk %}"class="edit"><i class="fa-solid fa-pencil" class="edit"></i>edit</a>
+                                    <a href="javascript:void(0)" class="delete" data-uri="{% url 'board:delete' comment.pk %}"><p><i class="fa-solid fa-trash"></i>delete</p></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="comment_content">
+                                <p class="comment_inhalt">{{comment.content | linebreaks}}</p>
+                                
+                            </div>
+                            {% if forloop.last is not True%}
+                            <div class="underline"></div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+
+                            {% if user.is_authenticated%}
+                            <div class="comment_form">
+                                <form method="post" action="comment/">
+                                    {% csrf_token %}
+                                    <textarea placeholder="댓글을 작성해주세요" name="content" id="content" rows="5"></textarea>
+                                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                                </form>
+                            </div>
+                            <div style="margin-top:5%;"></div>
+                            {% else %}
+                            <div class="login_to">
+                                <a href="{% url 'users:login'%}"><i class="fa-solid fa-arrow-right-to-bracket"></i>   Log in to leave a comment</a>
+                            </div>
+                            {% endif%}
                         </div>
-                        <div class="comment_content">
-                            <p class="comment_inhalt">{{comment.content | linebreaks}}</p>
-                        </div>
-                        {% if forloop.last is not True%}
-                        <div class="underline"></div>
-                        {% endif %}
-                        {% endfor %}
-                        {% endif %}
-
-
-                        {% if user.is_authenticated%}
-                        <form method="post" action="comment/">
-                            {% csrf_token %}
-                            <input type="textarea" placeholder="댓글을 작성해주세요" name="content" id="content"/>
-                            <button type="submit">submit</button>
-
-                        </form>
-                        {% else %}
-                        <a>Log in to leave a comment</a>
-                        {% endif%}
                     </div>
                 </div>
             </div>
+
         </div>
-        
-    </div>
 </main>
+<script type='text/javascript'>
+    const delete_elements = document.getElementsByClassName("delete");
+    Array.from(delete_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
+    });
+</script>
+
 {% endblock main%}

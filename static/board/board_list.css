@@ -23,32 +23,6 @@ main{
     background-color: rgb(255, 255, 255);
 }
 
-/* .post_list {
-    margin: 10% auto 2% auto;
-    width: 90%;
-    height: 60%;
-    border: 1px solid rgb(31, 31, 31);
-    border-radius: 5px;
-}
-.post_list ul.list_upper{
-    padding: 10px 30px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    font-weight: bold;
-    background-color: rgb(22, 22, 22);
-}
-.list_under .list_contents{
-    padding: 10px 35px;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.list_contents:nth-child(2n){
-    background-color: rgb(221, 221, 221);
-} */
-
 
 
 
@@ -61,13 +35,9 @@ main{
 }
 .pages a{
     margin-right: 5px;
-    /* padding: 1px 3px; */
-}
-.pages a:hover{ /* */
-    border: 1px solid rgb(231, 231, 231);    
     padding: 1px 3px;
-    box-sizing: border-box;
-} 
+}
+
 
 .pages span{
     margin-right: 5px;

@@ -1,0 +1,43 @@
+.container{
+    width:1140px;
+    margin:0 auto;
+}
+
+
+.update {
+    margin-top: 20%;
+}
+#content{
+    width: 91%;
+    resize: none;
+    overflow-y: hidden;
+    border:0;
+}
+
+.underline {
+    border-top: 1px solid rgb(221, 221, 221);
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width:97%;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.update button {
+    border: 0;
+    background-color: white;
+    cursor: pointer;
+    margin-left:1%;
+}
+.update form{
+    display: flex;
+    align-items: center;
+}
+
+.update_form {
+    border: 1px solid black;
+    margin-top:4%;
+}

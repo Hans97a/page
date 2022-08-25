@@ -8,4 +8,6 @@ urlpatterns = [
     path('', views.board.as_view(), name='index'),
     path('<int:pk>/', views.detail.as_view(), name='detail'),
     path('<int:pk>/comment/', views.comment, name='comment'),
+    path('comment_update/<int:pk>', views.CommentUpdate.as_view(), name='comment_update'),
+    path('comment_delete/<int:pk>', views.comment_delete, name='delete'),
 ]

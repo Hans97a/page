@@ -19,6 +19,7 @@ main .container{
     -webkit-box-shadow: 2px 4px 16px 1px rgba(0,0,0,0.47);
     -moz-box-shadow: 2px 4px 16px 1px rgba(0,0,0,0.47);
     box-shadow: 2px 4px 16px 1px rgba(0,0,0,0.47);
+    padding-bottom:1%;
 }
 
 .post {
@@ -54,11 +55,14 @@ main .container{
 .profile p.author{
     margin-left:2%;
     font-weight: bold;
+    font-size:1.25rem;
 }
 
 .profile .date {
     margin-left:1%;
     color: rgb(170, 170, 170);
+    font-size: 0.8rem;
+    margin-top:0.5%;
 }
 
 .post_content .post_inhalt{
@@ -83,22 +87,79 @@ main .container{
     align-items: center;
 }
 
+.comment_up{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
 .nickname{
     font-weight: bold;
     font-size: 1.1rem;
-    margin-left:1%;
+    margin-left:7%;
+    white-space: nowrap;
 }
 
 .comment_date {
-    padding-top:0.7%;
+    padding-top:2.7%;
     font-size: 0.8rem;
-    margin-left: 1%;
-    color:rgb(170, 170, 170)
+    margin-left: 4%;
+    color:rgb(170, 170, 170);
+    white-space: nowrap;
 }
 
 .comment_content{
     margin-left: 6%;
 }
+
+.comment_form {
+    border: 1px solid black;
+    margin-top:4%;
+}
+
+.comment_form form{
+    display:flex;
+    align-items: center;
+}
+
+
+.comment_form button{
+    border: 0;
+    background-color: white;
+    cursor: pointer;
+    margin-left:1%;
+}
+.comment_form textarea{
+    width: 95%;
+    height:6vh;
+    border:0;
+    resize: none;
+}
+
+.login_to {
+    margin-top:3%;
+    display: inline-block;
+    color:rgb(46, 102, 255);
+}
+
+.comment_edit {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.edit {
+    margin-right: 6%;
+}
+
+.delete p{
+    color: rgb(255, 86, 86);
+    display: inline;
+}
+
+
+
 
 
 
