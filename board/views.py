@@ -50,7 +50,7 @@ class board(ListView): # board 게시판의 메인 페이지
             else:
                 results=models.Post.objects.all().order_by('-created_at')
             return results
-        
+
     def paginate_queryset(self, queryset, page_size): #get_page / page
 
         paginator = self.get_paginator(
@@ -91,7 +91,7 @@ def comment(request, pk):
         
         if request.method =='POST':
             comment_form = forms.CommentForm(request.POST)
-            check_form= request.POST.get('content', '')
+            check_form = request.POST.get('content', '')
             if comment_form.is_valid() and check_form != '':
                 comment = comment_form.save(commit=False)
                 comment.post = post
@@ -119,7 +119,8 @@ class CommentUpdate(LoginRequiredMixin, UpdateView):
         
     def get_success_url(self):
         return reverse('board:detail', kwargs={'pk': self.get_object().post.pk})
-    
+
+
 def comment_delete(request, pk):
     comment = get_object_or_404(models.Comment, pk=pk)
     post = comment.post

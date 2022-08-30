@@ -11,6 +11,6 @@ class User(AbstractUser):
     personal_id = models.CharField(max_length=15, verbose_name='아이디', unique=True)
     
     real_name = models.CharField(
-        max_length=10, verbose_name='이름')
+        max_length=10, verbose_name = '이름')
     def __str__(self):
         return f'{self.nickname}'

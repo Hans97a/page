@@ -30,7 +30,6 @@ class SignUpForm(forms.ModelForm):
     password = forms.CharField(max_length=20, required=True, widget=forms.PasswordInput(attrs={'placeholder': '비밀번호'}))
     password1 = forms.CharField(max_length=20, required=True, label='비밀번호')
 
-
     def clean_real_name(self):
         real_name = self.cleaned_data.get('real_name') #이름 에러처리
         return real_name

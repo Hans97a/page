@@ -14,7 +14,6 @@ class Post(models.Model):
 
     def __str__(self):
         return f'[{self.pk}] -- {self.title}'
-
     def get_absolute_url(self):
         return f'{self.pk}'
     def get_content_markdown(self):
@@ -36,3 +35,4 @@ class Comment(models.Model):
         return f'{self.author} :: {self.content}'
     def get_absolute_url(self):
         return f'{self.pk}'
+
