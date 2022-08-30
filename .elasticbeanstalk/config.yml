@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: django-env
+    environment: blog-env-1
     group_suffix: null
 global:
   application_name: blog
