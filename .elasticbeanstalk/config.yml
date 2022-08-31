@@ -1,9 +1,8 @@
 branch-defaults:
   master:
-    environment: blog-env-1
-    group_suffix: null
+    environment: my-blog-pro-1
 global:
-  application_name: blog
+  application_name: my-blog
   branch: null
   default_ec2_keyname: aws-eb
   default_platform: Python 3.8 running on 64bit Amazon Linux 2
