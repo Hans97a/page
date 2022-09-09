@@ -44,4 +44,3 @@ const cvEl=document.querySelector('.download');
 cvEl.onclick = () => {
     alert('on Preparation Steps');
 }
-
