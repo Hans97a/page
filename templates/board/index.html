@@ -54,17 +54,10 @@ Board
                 <p class="search_result"><p style="color:red;">'{{ keyword|default_if_none:''}}'</p>
                 <p>에 대한 검색결과가 없습니다.   <i class="fa-solid fa-face-sad-tear"></i></p>
             </div>
-
-
-
             {% endif%}
         </div>
         
-
-
     </div>
-
-    
 
     <div class="pages">
         {% if page_obj.has_previous%}
@@ -94,7 +87,7 @@ Board
     </div>
     <div class="search">
         <form method="get" action="{% url 'board:index' %}">
-            <input type="search" placeholder="제목, 내용 검색" name="keyword" id="keyword" value="{{ keyword|default_if_none:''}}" />
+            <input type="search" placeholder="제목, 내용 검색" name="keyword" id="keyword" value="{{keyword|default_if_none:''}}" />
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
