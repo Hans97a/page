@@ -31,7 +31,7 @@ class SignUpForm(forms.ModelForm):
     password1 = forms.CharField(max_length=20, required=True, label='비밀번호')
 
     def clean_real_name(self):
-        real_name = self.cleaned_data.get('real_name') #이름 에러처리
+        real_name = self.cleaned_data.get('real_name')
         return real_name
     
     def clean_personal_id(self):
@@ -73,7 +73,7 @@ class SignUpForm(forms.ModelForm):
         # user.personal_id=self.cleaned_data.get('personal_id')
         # user.username=self.cleaned_data.get('username') # 필드에서 가져와서 입력받은 경우 생략가능
         personal_id=self.cleaned_data.get('personal_id')
-        user.username= personal_id
+        # user.username= personal_id  <- 기본적으로 username은 unique라서 동명이인 처리를 위해 아예 사용 안하는 것이 낫다
         password=self.cleaned_data.get('password')
         user.set_password(password)
         user.save()

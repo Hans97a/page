@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG'))
-print(type(os.environ.get('DEBUG')))
+
 ALLOWED_HOSTS = ['.elasticbeanstalk.com', 'localhost', '127.0.0.1']
 
 
@@ -56,6 +56,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'blog.urls'
+
+THIRD_PARTY_APPS = [
+    'storages'
+]
+
 
 TEMPLATES = [
     {
@@ -139,6 +144,16 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+if not DEBUG:
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_REGION_NAME = "ap-northeast-2"
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_S3_CUSTOM_DOMAIN = (f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com")
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+    DEFAULT_FILE_STORAGE = "blog.custom_storages.UploadStorage"
+    STATICFILES_STORAGE = "blog.custom_storages.StaticStorage"
 
 
 # Default primary key field type
